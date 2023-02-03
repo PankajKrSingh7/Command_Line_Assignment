@@ -1,32 +1,17 @@
+#!/bin/bash
 
-#! /bin/bash
-
-# Input from user
-echo "Enter the number -"
+#user input
+echo  "Enter Number : \c"
 read n
 
-i=2
-
- 
-#flag variable
-f=0
- 
-#running a loop from 2 to number/2
-while test $i -le `expr $n / 2`
+#running for loop starting from 2 
+for((i=2; i<=$n/2; i++))
 do
- 
-#checking if i is factor of number
-if test `expr $n % $i` -eq 0
-then
-f=1
-fi
- 
-#increment the loop variable
-i=`expr $i + 1`
+  ans=$(( n%i ))
+  if [ $ans -eq 0 ]
+  then
+    echo "$n is not a prime number."
+    exit 0
+  fi
 done
-if test $f -eq 1
-then
-echo "Not Prime"
-else
-echo "Prime"
-fi
+echo "$n is a prime number"
